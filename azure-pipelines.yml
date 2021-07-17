@@ -1,7 +1,0 @@
-# azure-pipelines.yml
-
-pool:
-  vmImage: 'ubuntu-latest'
-
-steps:
-- script: 'sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61'
