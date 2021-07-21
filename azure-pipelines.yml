@@ -1,7 +1,22 @@
-# azure-pipelines.yml
+#azure-pipelines.yml
+
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: ubuntu-latest
 
 steps:
-- script:  'sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61 | echo "deb https://dl.bintray.com/loadimpact/deb stable main" | sudo tee -a /etc/apt/sources.list | sudo apt-get update | sudo apt-get install k6'
+- script: sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
+  displayName: Install k6 tool
+- script: echo "deb https://dl.bintray.com/loadimpact/deb stable main" | sudo tee -a /etc/apt/sources.list  
+  displayName: line 2
+#- script: sudo apt-get update
+ # displayName: line 3
+
+- script: sudo snap install k6
+  displayName: line 4
+- script: k6 version
+  displayName: Check if k6 is installed
+- script:  chmod 777 'testsample/script.js'
+  displayName: Run k6 load test within Azure Pipelines 
+- script:  sudo k6 run testsample/script.js
+  displayName: Run k6 load test within Azure pipelines 
