@@ -17,6 +17,6 @@ steps:
 - script: k6 version
   displayName: Check if k6 is installed
 - script:  sudo chmod 777 '/home/vsts/work/1/s/script.js'
-  displayName: Run k6 load test within Azure Pipelines 
-- script: sudo open /home/vsts/work/1/s/script.js
+  displayName: chmod 
+- script: sudo k6 run /home/vsts/work/1/s/script.js
   displayName: Run k6 load test within Azure pipelines 
